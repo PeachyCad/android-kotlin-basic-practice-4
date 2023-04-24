@@ -8,13 +8,8 @@ fun main() {
 }
 
 fun driveCars() {
-    val builder: Vaz2107.Builder = Vaz2107.Builder()
-    val vaz1 = builder.build(Car.Plates("123", 77))
-    val vaz2 = builder.build(Car.Plates("321", 78))
-
-    // Проверочка...
-    builder.test(vaz1)
-    builder.test(vaz2)
+    val vaz1 = Togliatti.buildCar(Car.Plates("123", 77))
+    val vaz2 = Togliatti.buildCar(Car.Plates("321", 78))
 
     println("Экземпляры класса имеют разное внутреннее состояние:")
     vaz1.wheelToRight(10)
