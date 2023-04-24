@@ -21,12 +21,11 @@ fun driveCars() {
 }
 
 fun innerNestedCheck() {
-    val builder = Vaz2107.Builder()
-    val vaz = builder.build(Car.Plates("123", 77))
+    val vaz = Vaz2107.build(Car.Plates("123", 77))
     val output = vaz.VazOutput() // Создаем новый объект ИЗ ЭКЗЕМПЛЯРА МАШИНЫ
 
     println("Скорость до проверки: ${output.getCurrentSpeed()}") // Выводит 0
-    builder.test(vaz) // Газуем...
+    Vaz2107.test(vaz) // Газуем...
     println("Скорость после проверки: ${output.getCurrentSpeed()}") // Выводит случайную скорость
 }
 
@@ -36,7 +35,7 @@ fun garageMake() {
         override fun buildCar(plates: Car.Plates): Car {
             println("Запил Жигулей у: $maker...")
             println("Машину не проверяем... и в продакшн...")
-            return Vaz2107.Builder().build(plates)
+            return Vaz2107.build(plates)
         }
     }
 
