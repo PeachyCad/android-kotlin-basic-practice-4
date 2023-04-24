@@ -1,7 +1,10 @@
 package ru.otus.cars
 
 fun main() {
+    println("===> drive cars...")
     driveCars()
+    println("===> inner test...")
+    innerNestedCheck()
 }
 
 fun driveCars() {
@@ -18,4 +21,14 @@ fun driveCars() {
     println(vaz1.toString()) // Выводит 10 и случайную скорость
     vaz2.wheelToLeft(20)
     println(vaz2.toString()) // Выводит -20 и случайную скорость
+}
+
+fun innerNestedCheck() {
+    val builder = Vaz2107.Builder()
+    val vaz = builder.build(Car.Plates("123", 77))
+    val output = vaz.VazOutput() // Создаем новый объект ИЗ ЭКЗЕМПЛЯРА МАШИНЫ
+
+    println("Скорость до проверки: ${output.getCurrentSpeed()}") // Выводит 0
+    builder.test(vaz) // Газуем...
+    println("Скорость после проверки: ${output.getCurrentSpeed()}") // Выводит случайную скорость
 }
