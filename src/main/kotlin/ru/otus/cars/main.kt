@@ -5,6 +5,8 @@ fun main() {
     driveCars()
     println("===> inner test...")
     innerNestedCheck()
+    println("===> garage make...")
+    garageMake()
 }
 
 fun driveCars() {
@@ -26,4 +28,18 @@ fun innerNestedCheck() {
     println("Скорость до проверки: ${output.getCurrentSpeed()}") // Выводит 0
     builder.test(vaz) // Газуем...
     println("Скорость после проверки: ${output.getCurrentSpeed()}") // Выводит случайную скорость
+}
+
+fun garageMake() {
+    val maker = "Дядя Вася"
+    val garage = object : CarFactory {
+        override fun buildCar(plates: Car.Plates): Car {
+            println("Запил Жигулей у: $maker...")
+            println("Машину не проверяем... и в продакшн...")
+            return Vaz2107.Builder().build(plates)
+        }
+    }
+
+    val vaz = garage.buildCar(Car.Plates("500", 50))
+    println(vaz.toString())
 }
