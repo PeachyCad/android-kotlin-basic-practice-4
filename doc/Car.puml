@@ -1,0 +1,46 @@
+@startuml
+'https://plantuml.com/class-diagram
+hide empty members
+
+interface CarInput {
+    +wheelToRight(degrees: Int)
+    +wheelToLeft(degrees: Int)
+}
+
+interface CarOutput {
+    +getCurrentSpeed(): Int
+    +getFuelContents(): Int
+}
+
+abstract class TankMouth {
+    +open()
+    +close()
+}
+note right of TankMouth
+    Горловина бензобака
+end note
+
+class PetrolMouth {
+    +fuelPetrol(liters: Int)
+}
+PetrolMouth -up-|> TankMouth
+
+class LpgMouth {
+    +fuelLpg(liters: Int)
+}
+LpgMouth -up-|> TankMouth
+
+interface Car {
+    +plates: CarPlates
+    +carOutput: CarOutput
+    +tankMouth: TankMouth
+}
+CarInput <|-down- Car
+CarOutput -right-* Car
+TankMouth -up-* Car
+
+class CarPlates
+CarPlates -left-* Car
+
+
+@enduml

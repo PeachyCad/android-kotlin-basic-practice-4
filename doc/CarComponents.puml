@@ -1,0 +1,10 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+package Car {
+    [Tank]
+}
+TankMouth -> Tank: заправка
+[Tank] -> CarOutput: уровень топлива
+
+@enduml
