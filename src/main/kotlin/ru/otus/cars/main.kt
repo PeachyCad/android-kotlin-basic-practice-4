@@ -8,6 +8,8 @@ fun main() {
     println("\n===> garage make...")
     garageMake()
     println("\n===> model special...")
+    println("\n===> get equipment...")
+    getEquipment()
 }
 
 fun driveCars() {
@@ -42,4 +44,15 @@ fun garageMake() {
 
     val vaz = garage.buildCar(Car.Plates("500", 50))
     println(vaz.toString())
+}
+
+fun getEquipment() {
+    val cars = listOf(
+        Vaz2107.build(Car.Plates("123", 77)),
+        Vaz2108.build(Car.Plates("321", 78))
+    )
+
+    cars.forEach { car ->
+        println("Оборудование: ${car.getEquipment()}")
+    }
 }

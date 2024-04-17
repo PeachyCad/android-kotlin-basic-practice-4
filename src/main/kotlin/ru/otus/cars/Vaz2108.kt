@@ -26,6 +26,12 @@ class Vaz2108 private constructor() : VazPlatform() {
         println("Ж-ж-ж-ж....")
     }
 
+    // Переопределяем метод родителя
+    override fun getEquipment(): String {
+        // Добавляем музыку к оборудованию
+        return super.getEquipment() + ", музыка"
+    }
+
     private var currentSpeed: Int = 0 // Скока жмёт
 
     /**
