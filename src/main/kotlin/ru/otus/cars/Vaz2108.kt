@@ -3,12 +3,12 @@ package ru.otus.cars
 /**
  * Восьмерка
  */
-class Vaz2108 private constructor() : VazPlatform() {
+class Vaz2108 private constructor(color: String) : VazPlatform(color) {
     /**
      * Сам-себе-сборщик ВАЗ 2108.
      */
     companion object : CarBuilder {
-        override fun build(plates: Car.Plates): Vaz2108 = Vaz2108().apply {
+        override fun build(plates: Car.Plates): Vaz2108 = Vaz2108("Красный").apply {
             this.plates = plates
         }
 

@@ -5,12 +5,12 @@ import kotlin.random.Random
 /**
  * Семёрочка
  */
-class Vaz2107 private constructor() : VazPlatform() {
+class Vaz2107 private constructor(color: String) : VazPlatform(color) {
     /**
      * Сам-себе-сборщик ВАЗ 2107.
      */
     companion object : CarBuilder {
-        override fun build(plates: Car.Plates): Vaz2107 = Vaz2107().apply {
+        override fun build(plates: Car.Plates): Vaz2107 = Vaz2107("Зеленый").apply {
             this.plates = plates
         }
 
