@@ -1,12 +1,13 @@
 package ru.otus.cars
 
 fun main() {
-    println("===> drive cars...")
+    println("\n===> drive cars...")
     driveCars()
-    println("===> inner test...")
+    println("\n===> inner test...")
     innerNestedCheck()
-    println("===> garage make...")
+    println("\n===> garage make...")
     garageMake()
+    println("\n===> model special...")
 }
 
 fun driveCars() {

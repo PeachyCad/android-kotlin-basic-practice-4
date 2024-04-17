@@ -1,38 +1,29 @@
 package ru.otus.cars
 
-import kotlin.random.Random
-
 /**
- * Семёрочка
+ * Восьмерка
  */
-class Vaz2107 private constructor() : Car {
+class Vaz2108 private constructor() : Car {
     /**
-     * Сам-себе-сборщик ВАЗ 2107.
+     * Сам-себе-сборщик ВАЗ 2108.
      */
     companion object : CarBuilder {
-        override fun build(plates: Car.Plates): Vaz2107 = Vaz2107().apply {
+        override fun build(plates: Car.Plates): Vaz2108 = Vaz2108().apply {
             this.plates = plates
-        }
-
-        /**
-         * Проверь, ездит или нет
-         */
-        fun test(vaz2107: Vaz2107) {
-            vaz2107.currentSpeed = Random.nextInt(0, 60)
         }
 
         /**
          * Используем вместо STATIC
          */
-        const val MODEL = "2107"
+        const val MODEL = "2108"
     }
 
     /**
-     * Семерка едет так
+     * Восьмерка едет так
      */
-    fun drdrdrdrdr() {
-        println("Помчали на $MODEL:")
-        println("Др-др-др-др....")
+    fun zhzhzhzh() {
+        println("Помчали на ${MODEL}:")
+        println("Ж-ж-ж-ж....")
     }
 
     private var wheelAngle: Int = 0 // Положение руля
@@ -47,7 +38,7 @@ class Vaz2107 private constructor() : Car {
 
     // Выводим состояние машины
     override fun toString(): String {
-        return "Vaz2107(plates=$plates, wheelAngle=$wheelAngle, currentSpeed=$currentSpeed)"
+        return "Vaz2108(plates=$plates, wheelAngle=$wheelAngle, currentSpeed=$currentSpeed)"
     }
 
     /**
@@ -60,11 +51,11 @@ class Vaz2107 private constructor() : Car {
     override fun wheelToLeft(degrees: Int) { wheelAngle -= degrees }
 
     /**
-     * Имеет доступ к внутренним данным ЭТОГО ВАЗ-2107!
+     * Имеет доступ к внутренним данным ЭТОГО ВАЗ-2108!
      */
     inner class VazOutput : CarOutput {
         override fun getCurrentSpeed(): Int {
-            return this@Vaz2107.currentSpeed
+            return this@Vaz2108.currentSpeed
         }
     }
 }
