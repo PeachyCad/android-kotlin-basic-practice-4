@@ -5,7 +5,7 @@ import kotlin.random.Random
 /**
  * Семёрочка
  */
-class Vaz2107 private constructor() : Car {
+class Vaz2107 private constructor() : VazPlatform() {
     /**
      * Сам-себе-сборщик ВАЗ 2107.
      */
@@ -35,7 +35,6 @@ class Vaz2107 private constructor() : Car {
         println("Др-др-др-др....")
     }
 
-    private var wheelAngle: Int = 0 // Положение руля
     private var currentSpeed: Int = 0 // Скока жмёт
 
     /**
@@ -54,10 +53,6 @@ class Vaz2107 private constructor() : Car {
      * Делегируем приборы внутреннему классу
      */
     override val carOutput: CarOutput = VazOutput()
-
-    override fun wheelToRight(degrees: Int) { wheelAngle += degrees }
-
-    override fun wheelToLeft(degrees: Int) { wheelAngle -= degrees }
 
     /**
      * Имеет доступ к внутренним данным ЭТОГО ВАЗ-2107!
