@@ -17,7 +17,10 @@ abstract class VazPlatform(override val color: String) : Car {
 }
 
 // Перечисление двигателей ВАЗ
-// Объем двигателя определен раз и навсегда
-enum class VazEngine(val volume: Int) {
-    LADA_2107(1_600), SAMARA_2108(1_300)
+sealed class VazEngine {
+    // Объем двигателя можно задать при производстве
+    abstract val volume: Int
+
+    data class LADA_2107(override val volume: Int) : VazEngine()
+    data class SAMARA_2108(override val volume: Int) : VazEngine()
 }

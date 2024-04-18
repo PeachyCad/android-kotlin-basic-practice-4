@@ -1,5 +1,7 @@
 package ru.otus.cars
 
+import kotlin.random.Random
+
 /**
  * Восьмерка
  */
@@ -8,8 +10,16 @@ class Vaz2108 private constructor(color: String) : VazPlatform(color) {
      * Сам-себе-сборщик ВАЗ 2108.
      */
     companion object : CarBuilder {
+        private fun getRandomEngine(): VazEngine {
+            return when (Random.nextInt(0, 3)) {
+                0 -> VazEngine.SAMARA_2108(1100)
+                1 -> VazEngine.SAMARA_2108(1300)
+                else -> VazEngine.SAMARA_2108(1500)
+            }
+        }
+
         override fun build(plates: Car.Plates): Vaz2108 = Vaz2108("Красный").apply {
-            this.engine = VazEngine.SAMARA_2108
+            this.engine = getRandomEngine()
             this.plates = plates
         }
 

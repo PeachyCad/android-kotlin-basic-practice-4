@@ -85,7 +85,7 @@ fun repairEngine(car: VazPlatform) {
     // В зависимости от типа двигателя выполняем разные действия
     // when обеспечивает обход всех вариантов перечисления
     when (car.engine) {
-        VazEngine.LADA_2107 -> println("Чистка карбюратора у двигателя объемом ${car.engine.volume} куб.см у машины $car")
-        VazEngine.SAMARA_2108 -> println("Угол зажигания у двигателя объемом ${car.engine.volume} куб.см у машины $car")
+        is VazEngine.LADA_2107 -> println("Чистка карбюратора у двигателя объемом ${car.engine.volume} куб.см у машины $car")
+        is VazEngine.SAMARA_2108 -> println("Угол зажигания у двигателя объемом ${car.engine.volume} куб.см у машины $car")
     }
 }
