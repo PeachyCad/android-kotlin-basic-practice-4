@@ -14,6 +14,8 @@ fun main() {
     getColor()
     println("\n===> tech checks...")
     techChecks()
+    println("\n===> Taz...")
+    println(Taz.color)
 }
 
 fun driveCars() {
