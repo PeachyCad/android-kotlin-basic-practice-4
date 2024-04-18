@@ -11,6 +11,7 @@ class Vaz2107 private constructor(color: String) : VazPlatform(color) {
      */
     companion object : CarBuilder {
         override fun build(plates: Car.Plates): Vaz2107 = Vaz2107("Зеленый").apply {
+            this.engine = VazEngine.LADA_2107
             this.plates = plates
         }
 
@@ -26,6 +27,10 @@ class Vaz2107 private constructor(color: String) : VazPlatform(color) {
          */
         const val MODEL = "2107"
     }
+
+    // Переопределяем свойство родителя
+    override lateinit var engine: VazEngine
+        private set
 
     /**
      * Семерка едет так

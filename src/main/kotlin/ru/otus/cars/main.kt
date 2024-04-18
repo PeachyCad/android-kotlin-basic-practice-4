@@ -12,6 +12,8 @@ fun main() {
     getEquipment()
     println("\n===> get color...")
     getColor()
+    println("\n===> tech checks...")
+    techChecks()
 }
 
 fun driveCars() {
@@ -67,5 +69,23 @@ fun getColor() {
 
     cars.forEach { car ->
         println("Цвет: ${car.color}")
+    }
+}
+
+fun techChecks() {
+    val vaz1 = Vaz2107.build(Car.Plates("123", 77))
+    val vaz2 = Vaz2108.build(Car.Plates("321", 78))
+
+    repairEngine(vaz1)
+    repairEngine(vaz2)
+}
+
+fun repairEngine(car: VazPlatform) {
+    // Проверяем тип двигателя
+    // В зависимости от типа двигателя выполняем разные действия
+    // when обеспечивает обход всех вариантов перечисления
+    when (car.engine) {
+        VazEngine.LADA_2107 -> println("Чистка карбюратора у двигателя объемом ${car.engine.volume} куб.см у машины $car")
+        VazEngine.SAMARA_2108 -> println("Угол зажигания у двигателя объемом ${car.engine.volume} куб.см у машины $car")
     }
 }
