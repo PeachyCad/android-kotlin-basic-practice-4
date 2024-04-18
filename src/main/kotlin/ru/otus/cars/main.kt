@@ -17,8 +17,8 @@ fun main() {
 }
 
 fun driveCars() {
-    val vaz1 = Togliatti.buildCar(Car.Plates("123", 77))
-    val vaz2 = Togliatti.buildCar(Car.Plates("321", 78))
+    val vaz1 = Togliatti.buildCar(Vaz2107, Car.Plates("123", 77))
+    val vaz2 = Togliatti.buildCar(Vaz2108, Car.Plates("321", 78))
 
     println("Экземпляры класса имеют разное внутреннее состояние:")
     vaz1.wheelToRight(10)
@@ -39,14 +39,14 @@ fun innerNestedCheck() {
 fun garageMake() {
     val maker = "Дядя Вася"
     val garage = object : CarFactory {
-        override fun buildCar(plates: Car.Plates): Car {
+        override fun buildCar(builder: CarBuilder, plates: Car.Plates): Car {
             println("Запил Жигулей у: $maker...")
             println("Машину не проверяем... и в продакшн...")
-            return Vaz2107.build(plates)
+            return builder.build(plates)
         }
     }
 
-    val vaz = garage.buildCar(Car.Plates("500", 50))
+    val vaz = garage.buildCar(Vaz2107, Car.Plates("500", 50))
     println(vaz.toString())
 }
 

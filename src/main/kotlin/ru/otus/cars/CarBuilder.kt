@@ -3,7 +3,7 @@ package ru.otus.cars
 /**
  * Сборщик машины
  */
-interface CarBuilder {
+sealed interface CarBuilder {
     /**
      * Собери машину
      */

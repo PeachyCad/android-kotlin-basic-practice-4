@@ -23,6 +23,11 @@ class Vaz2108 private constructor(color: String) : VazPlatform(color) {
             this.plates = plates
         }
 
+        fun alignWheels(vaz2108: Vaz2108) {
+            println("Ваз 2108 выравнивает колёса... ")
+            vaz2108.wheelAngle = 0
+        }
+
         /**
          * Используем вместо STATIC
          */
