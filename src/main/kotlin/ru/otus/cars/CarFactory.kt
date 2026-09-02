@@ -32,10 +32,10 @@ object Togliatti : CarFactory {
         return vaz
     }
 
-    override fun buildCar(builder: CarBuilder, plates: Car.Plates): Car {
-        return when (builder) {
-            is Vaz2107.Companion -> return buildVaz2107(plates)
-            is Vaz2108.Companion -> return buildVaz2108(plates)
+    // when по sealed-иерархии CarBuilder: else не нужен, значение возвращается напрямую
+    override fun buildCar(builder: CarBuilder, plates: Car.Plates): Car =
+        when (builder) {
+            is Vaz2107.Companion -> buildVaz2107(plates)
+            is Vaz2108.Companion -> buildVaz2108(plates)
         }
-    }
 }

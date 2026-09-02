@@ -16,6 +16,8 @@ fun main() {
     techChecks()
     println("\n===> Taz...")
     println(Taz.color)
+    println("\n===> refuel cars...")
+    refuelCars()
 }
 
 fun driveCars() {
@@ -90,4 +92,30 @@ fun repairEngine(car: VazPlatform) {
         is VazEngine.LADA_2107 -> println("Чистка карбюратора у двигателя объемом ${car.engine.volume} куб.см у машины $car")
         is VazEngine.SAMARA_2108 -> println("Угол зажигания у двигателя объемом ${car.engine.volume} куб.см у машины $car")
     }
+}
+
+fun refuelCars() {
+    val cars = listOf(
+        Vaz2107.build(Car.Plates("123", 77)),
+        Vaz2108.build(Car.Plates("321", 78)),
+        Taz
+    )
+
+    println("Баки до заправки:")
+    cars.forEach { printFuelLevel(it) }
+
+    cars.refuelAll()
+
+    println("Баки после заправки:")
+    cars.forEach { printFuelLevel(it) }
+}
+
+/**
+ * Водитель смотрит уровень топлива на приборке - через CarOutput.
+ * У ТАЗа приборов нет, поэтому обращение к ним может не удаться.
+ */
+fun printFuelLevel(car: Car) {
+    val level = runCatching { car.carOutput.getFuelContents() }
+        .fold({ "$it л" }, { "приборов нет" })
+    println("$car -> на приборке: $level")
 }

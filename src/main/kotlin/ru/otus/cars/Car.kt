@@ -20,6 +20,11 @@ interface Car : CarInput {
     val carOutput: CarOutput
 
     /**
+     * Горловина бака: единственный способ заправить машину снаружи
+     */
+    val tankMouth: TankMouth
+
+    /**
      * Получить оборудование
      */
     fun getEquipment(): String

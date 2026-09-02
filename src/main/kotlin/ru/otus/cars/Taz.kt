@@ -19,6 +19,12 @@ object Taz: Car {
         get() = throw NotImplementedError("Приборов нет")
 
     /**
+     * Горловина есть, а бак лучше не трогать
+     */
+    override val tankMouth: TankMouth
+        get() = RustyTank.mouth
+
+    /**
      * Получить оборудование
      */
     override fun getEquipment(): String = "Крыса"
@@ -35,5 +41,22 @@ object Taz: Car {
      */
     override fun wheelToLeft(degrees: Int) {
         throw NotImplementedError("Руля нет")
+    }
+
+    // Выводим состояние машины
+    override fun toString(): String = "Taz(color=$color, fuel=${RustyTank.getContents()})"
+
+    /**
+     * Ржавый бак ТАЗа. Вложенный private object: снаружи о нём никто не знает.
+     */
+    private object RustyTank : Tank {
+        // Горловину и ТАЗу ставит специалист
+        override val mouth: TankMouth = Tank.petrolMouthFor(this)
+
+        override fun getContents(): Int = 0
+
+        override fun receiveFuel(liters: Int) {
+            throw TankExplodedException("Бак ТАЗа взорвался при заправке!")
+        }
     }
 }
